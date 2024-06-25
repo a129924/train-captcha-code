@@ -1,5 +1,8 @@
+from typing import Any
+
+
 def fetch_url(url: str, timeout: float = 30):
-    from urllib.request import urlopen, Request
+    from urllib.request import Request, urlopen
 
     headers: dict[str, str] = {
         "User-Agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
@@ -19,3 +22,9 @@ def fetch_url(url: str, timeout: float = 30):
             hdrs=headers,  # type: ignore
             fp=None,
         )
+
+
+def fetch_url_to_json(url: str, timeout: float = 30) -> Any:
+    from json import loads
+
+    return loads(fetch_url(url=url, timeout=timeout))
