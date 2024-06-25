@@ -7,6 +7,7 @@ authors = [
 ]
 dependencies = [
     "opencv-python>=4.10.0.84",
+    "pydantic>=2.7.4",
 ]
 requires-python = "==3.9.*"
 readme = "README.md"
@@ -15,3 +16,8 @@ license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=8.2.2",
+]
