@@ -7,12 +7,10 @@ async def test_async_download_pic():
 
     from src.train_captcha_code.service.captcha_code_pic_service import (  # type: ignore
         async_write_verification_code_pic,
-        fetch_verification_code_url,
+        fetch_captcha_code_url,
     )
 
-    response_schema = fetch_verification_code_url(
-        url="https://gen.caca01.com/ttcode/quest"
-    )
+    response_schema = fetch_captcha_code_url(url="https://gen.caca01.com/ttcode/quest")
     root_path = "./captcha_code_pics"
 
     states = await gather(

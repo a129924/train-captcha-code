@@ -9,6 +9,6 @@ class CodeList(BaseModel):
     ans: str
 
 
-class VerificationCodeResponse(BaseModel):
+class CaptchaCodeResponse(BaseModel):
     ret: Literal[0]
     codelist: list[CodeList]
