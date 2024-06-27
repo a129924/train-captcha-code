@@ -7,6 +7,6 @@ async def write_file_from_byte_string(
     mode: str = "wb",
 ) -> WriteFileState:
     from .._loop.to_async import to_async
-    from ..sync.file import write_file_from_byte_string
+    from ..sync._file import write_file_from_byte_string
 
     return await to_async(write_file_from_byte_string, text, out_filapath, mode)
