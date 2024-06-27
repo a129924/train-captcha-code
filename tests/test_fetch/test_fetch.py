@@ -1,11 +1,9 @@
 def test_fetch():
-    from json import loads
-
     from src.train_verification_code.schema.verification_code_response import (
         VerificationCodeResponse,
     )
-    from src.train_verification_code.utils.fetch import fetch_url
+    from src.train_verification_code.utils.sync.fetch import fetch_url_to_json
 
-    json_ = loads(fetch_url("https://gen.caca01.com/ttcode/quest"))
+    json_ = fetch_url_to_json("https://gen.caca01.com/ttcode/quest")
 
     assert VerificationCodeResponse(**json_)
