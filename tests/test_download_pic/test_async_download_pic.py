@@ -6,7 +6,7 @@ async def test_async_download_pic():
     from asyncio import gather
 
     from src.train_captcha_code.service.captcha_code_pic_service import (  # type: ignore
-        async_write_verification_code_pic,
+        async_write_captcha_code_pic,
         fetch_captcha_code_url,
     )
 
@@ -15,7 +15,7 @@ async def test_async_download_pic():
 
     states = await gather(
         *[
-            async_write_verification_code_pic(
+            async_write_captcha_code_pic(
                 root_path=root_path,
                 text=codelist.code,
                 filename=f"{codelist.ans}.png",

@@ -23,7 +23,7 @@ def write_verification_code_pics(
         )
 
 
-async def async_write_verification_code_pic(
+async def async_write_captcha_code_pic(
     root_path: str,
     text: str,
     filename: str,
