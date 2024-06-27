@@ -5,7 +5,7 @@ from pytest import mark
 async def test_async_download_pic():
     from asyncio import gather
 
-    from src.train_verification_code.service.captcha_code_pic_service import (  # type: ignore
+    from src.train_captcha_code.service.captcha_code_pic_service import (  # type: ignore
         async_write_verification_code_pic,
         fetch_verification_code_url,
     )

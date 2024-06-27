@@ -1,5 +1,5 @@
 def test_download_pic():
-    from src.train_verification_code.service.captcha_code_pic_service import (
+    from src.train_captcha_code.service.captcha_code_pic_service import (
         fetch_verification_code_url,
         write_verification_code_pics,
     )
