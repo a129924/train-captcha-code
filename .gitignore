@@ -1,6 +1,7 @@
 pdm.lock
 .vscode
 captcha_code_pics/
+/config/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
