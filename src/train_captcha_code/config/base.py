@@ -5,8 +5,6 @@ __all__ = ["BaseConfig"]
 
 
 class BaseConfig(BaseSettings):
-    model_config: SettingsConfigDict = {}
-
     @classmethod
     def set_model_config(cls, model_config: SettingsConfigDict) -> type[Self]:
         cls.model_config = model_config
