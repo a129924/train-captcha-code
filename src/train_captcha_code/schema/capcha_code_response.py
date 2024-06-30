@@ -8,6 +8,9 @@ class CodeList(BaseModel):
     code: str
     ans: str
 
+    def __hash__(self):
+        return hash((self.code, self.ans))
+
 
 class CaptchaCodeResponse(BaseModel):
     ret: Literal[0]
