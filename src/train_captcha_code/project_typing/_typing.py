@@ -1,6 +1,8 @@
-from typing import Literal
+from typing import Literal, TypeVar
 
 from typing_extensions import NamedTuple, TypedDict
+
+T = TypeVar("T")
 
 
 class WriteFileState(TypedDict):
