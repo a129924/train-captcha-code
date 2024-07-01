@@ -9,6 +9,9 @@ dependencies = [
     "opencv-python>=4.10.0.84",
     "pydantic>=2.7.4",
     "pydantic-settings>=2.3.4",
+    "torch>=2.3.1",
+    "torchvision>=0.18.1",
+    "torchaudio>=2.3.1",
 ]
 requires-python = "==3.9.*"
 readme = "README.md"
