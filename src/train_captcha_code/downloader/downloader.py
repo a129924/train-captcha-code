@@ -99,7 +99,7 @@ class CaptchaCodeDownloader:
                     async_write_captcha_code_pic(
                         root_path=self.config.root_path,
                         text=codelist.code,
-                        filename=f"{codelist.ans}.png",
+                        filename=f"{codelist.ans}_{codelist.__hash__()}.png",
                     )
                     for codelist in all_codelist
                 ]
