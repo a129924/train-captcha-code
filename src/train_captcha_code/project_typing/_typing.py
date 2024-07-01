@@ -11,3 +11,8 @@ class WriteFileState(TypedDict):
 class LabeledFile(NamedTuple):
     target_file: str
     label: str
+
+
+class DatasetSplitSizes(NamedTuple):
+    train_size: int
+    test_size: int
