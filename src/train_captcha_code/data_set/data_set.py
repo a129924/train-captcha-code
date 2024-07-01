@@ -16,9 +16,9 @@ class CaptchaDataSet(Dataset):
         config_path: str,
         transform: transforms.Compose = transforms.Compose([transforms.ToTensor()]),
     ):
-        from ..config.load import LoadConfig
+        from ..config.captcha_data_set import CaptchaDatasetConfig
 
-        self.config = LoadConfig.set_model_config(
+        self.config = CaptchaDatasetConfig.set_model_config(
             {
                 "env_file": config_path,
                 "env_file_encoding": "UTF-8",
