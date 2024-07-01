@@ -2,10 +2,10 @@ from pytest import mark
 
 
 @mark.asyncio
-async def test_500_downloader():
+async def test_4000_downloader():
     from src.train_captcha_code.downloader import CaptchaCodeDownloader
 
-    count = 500
+    count = 4000
     downloader = CaptchaCodeDownloader(
         config_path="./config/download.env",
         target_quantity=count,
