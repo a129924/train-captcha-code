@@ -1,16 +1,16 @@
 from functools import cached_property
 
 from torch import Tensor
-from torch.utils.data import Dataset
 from torchvision import transforms
 from typing_extensions import override
 
 from ..project_typing._typing import LabeledFile
+from .base import DataSetBase
 
 __all__ = ["CaptchaDataSet"]
 
 
-class CaptchaDataSet(Dataset):
+class CaptchaDataSet(DataSetBase[tuple[Tensor, str]]):
     def __init__(
         self,
         config_path: str,
@@ -43,6 +43,7 @@ class CaptchaDataSet(Dataset):
             )
         ]
 
+    @override
     def __len__(self) -> int:
         return len(self.target_img_files_and_labels)
 
