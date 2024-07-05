@@ -1,4 +1,7 @@
+from functools import lru_cache
 from typing import Optional
+
+__all__ = ["char_to_index", "calculate_max_quantity", "get_files_in_folder"]
 
 
 def calculate_max_quantity(max_count: int, base_num: int) -> int:
@@ -17,3 +20,10 @@ def get_files_in_folder(
         return [file for file in listdir(path=path) if file.endswith(file_extension)]
     else:
         return listdir(path=path)
+
+
+@lru_cache
+def char_to_index() -> dict[str, int]:
+    from string import ascii_letters, digits
+
+    return {char: idx for idx, char in enumerate(f"{digits}{ascii_letters}")}
