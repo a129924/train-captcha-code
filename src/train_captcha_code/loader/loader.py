@@ -22,7 +22,7 @@ class CaptchaLoader(Generic[T]):
     def train_loader(self) -> DataLoader[T]:
         return create_loader(
             data_set=self._split_dataset()[0],
-            batch_size=len(self.dataset),
+            batch_size=128,
             shuffle=True,
         )
 
@@ -30,7 +30,7 @@ class CaptchaLoader(Generic[T]):
     def test_loader(self) -> DataLoader[T]:
         return create_loader(
             data_set=self._split_dataset()[1],
-            batch_size=len(self.dataset),
+            batch_size=128,
             shuffle=False,
         )
 
