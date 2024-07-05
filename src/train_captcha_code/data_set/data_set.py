@@ -1,16 +1,17 @@
 from functools import cached_property
 
-from torch import Tensor
+from torch import Tensor, long, tensor
 from torchvision import transforms
 from typing_extensions import override
 
 from ..project_typing._typing import LabeledFile
+from ..utils import char_to_index
 from .base import DataSetBase
 
 __all__ = ["CaptchaDataSet"]
 
 
-class CaptchaDataSet(DataSetBase[tuple[Tensor, str]]):
+class CaptchaDataSet(DataSetBase[tuple[Tensor, Tensor]]):
     def __init__(
         self,
         config_path: str,
@@ -25,6 +26,7 @@ class CaptchaDataSet(DataSetBase[tuple[Tensor, str]]):
             }
         )()  # type: ignore
         self.transform = transform
+        self.char_to_index = char_to_index()
 
     @cached_property
     def target_img_files_and_labels(self) -> list[LabeledFile]:
@@ -48,12 +50,14 @@ class CaptchaDataSet(DataSetBase[tuple[Tensor, str]]):
         return len(self.target_img_files_and_labels)
 
     @override
-    def __getitem__(self, index: int) -> tuple[Tensor, str]:
+    def __getitem__(self, index: int) -> tuple[Tensor, Tensor]:
         from PIL.Image import open as pil_open
 
         labeled_file = self.target_img_files_and_labels[index]
 
         return (
             self.transform(pil_open(labeled_file.target_file).convert("RGB")),  # type: ignore
-            labeled_file.label,
+            tensor(
+                [self.char_to_index[char] for char in labeled_file.label], dtype=long
+            ),
         )
