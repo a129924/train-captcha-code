@@ -65,14 +65,6 @@ class CaptchaCodeDownloader:
             base_num=self.API_MAX_COUNT,
         )
 
-    # def _parse_response(self) -> list[CaptchaCodeResponse]:
-    #     from ..service.captcha_code_pic_service import fetch_captcha_code_url
-
-    #     return [
-    #         fetch_captcha_code_url(self.config.captcha_code_pic_url)
-    #         for _ in range(self.now_max_worker)
-    #     ]
-
     def _parse_response_to_codelist(self) -> Optional[set[CodeList]]:
         if self.remaining_quantity < 0:
             print("<0")
