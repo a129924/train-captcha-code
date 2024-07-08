@@ -1,7 +1,12 @@
 from functools import lru_cache
 from typing import Optional
 
-__all__ = ["char_to_index", "calculate_max_quantity", "get_files_in_folder"]
+__all__ = [
+    "char_to_index",
+    "calculate_max_quantity",
+    "get_files_in_folder",
+    "index_to_char",
+]
 
 
 def calculate_max_quantity(max_count: int, base_num: int) -> int:
@@ -27,3 +32,8 @@ def char_to_index() -> dict[str, int]:
     from string import ascii_letters, digits
 
     return {char: idx for idx, char in enumerate(f"{digits}{ascii_letters}")}
+
+
+@lru_cache
+def index_to_char() -> dict[int, str]:
+    return {idx: char for char, idx in char_to_index().items()}
