@@ -38,6 +38,7 @@ class CNN(nn.Module):
         self.num_char = num_char
         self.num_class = num_class
 
+    @override
     def forward(self, x: Tensor) -> Tensor:
         x = self.conv(x)
         x = x.view(-1, 512 * 6 * 7)
