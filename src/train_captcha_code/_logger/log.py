@@ -1,9 +1,3 @@
-from functools import lru_cache
-
-__all__ = ["create_logger"]
-
-
-@lru_cache
 def create_logger(
     logger_name: str = __name__,
     *,
