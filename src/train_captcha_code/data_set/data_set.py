@@ -61,5 +61,5 @@ class CaptchaDataSet(DataSetBase[CaptchaItem]):
             label_index=tensor(
                 [self.char_to_index[char] for char in labeled_file.label], dtype=long
             ),
-            label_name=labeled_file.label,
+            filepath=labeled_file.target_file,
         )

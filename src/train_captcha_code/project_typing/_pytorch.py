@@ -8,9 +8,9 @@ class CaptchaItem(NamedTuple):
     """
     image: Tensor
     label_index: Tensor
-    label_name: str
+    filepath: str
     """
 
     image: Tensor
     label_index: Tensor
-    label_name: str
+    filepath: str
