@@ -1,26 +1,27 @@
-from functools import cached_property
-
 from torch import optim
 from torch.nn import CrossEntropyLoss, Module
 from torch.utils.data import DataLoader
 from typing_extensions import Self
 
+from .._logger import Logger
 from ..data_set.base import DataSetBase
+from ..project_typing._typing import T
 
 __all__ = ["ModelBaseTrainer"]
 
 
 class ModelBaseTrainer:
+    logger = Logger
+
     def __init__(
         self,
         model: Module,
         dataset: DataSetBase,
-        train_loader: DataLoader,
-        test_loader: DataLoader,
+        train_loader: DataLoader[T],
+        test_loader: DataLoader[T],
         criterion: CrossEntropyLoss,
         *,
         learning_rate: float,
-        logger_path: str,
     ) -> None:
         self.model = model
 
@@ -30,14 +31,6 @@ class ModelBaseTrainer:
 
         self.criterion = criterion
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
-
-        self.logger_path = logger_path
-
-    @cached_property
-    def logger(self):
-        from .._logger import create_logger
-
-        return create_logger(logger_path=self.logger_path)
 
     def load_model_from_file(self, model_path: str) -> Self:
         from os.path import exists
